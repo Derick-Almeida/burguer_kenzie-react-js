@@ -1,0 +1,7 @@
+.product__list {
+    padding: 35px 110px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 70%;
+}

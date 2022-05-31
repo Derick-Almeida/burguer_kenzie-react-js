@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100vw;
+    max-width: 100%;
+    padding: 21px 110px;
+    background: #F5F5F5;
+}
+
+.header .title {
+    color: #333333;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.header .title--small {
+    color: #EB5757;
+    font-size: 1.3rem;
+    font-weight: 600;
+}

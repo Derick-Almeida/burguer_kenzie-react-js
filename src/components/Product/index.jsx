@@ -1,5 +1,6 @@
 import { Button } from "../../style/global";
 import { Card } from "./style";
+import { FaCartPlus } from "react-icons/fa";
 
 function Product({
   product,
@@ -50,7 +51,7 @@ function Product({
           <p>R$ {price}</p>
         )}
         <Button id={id} onClick={(event) => handleClick(event.target.id)}>
-          Adicionar
+          <FaCartPlus /> Adicionar
         </Button>
       </div>
     </Card>

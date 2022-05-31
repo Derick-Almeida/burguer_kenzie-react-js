@@ -1,4 +1,6 @@
 import { CardCart } from "./style";
+import { FiShoppingBag } from "react-icons/fi";
+import "./style.css";
 
 function CartProduct({
   cartProducts,
@@ -24,26 +26,37 @@ function CartProduct({
   }
 
   return (
-    <ul>
-      {cartProducts.map(({ id, name, img, category }) => (
-        <CardCart key={id}>
-          <div
-            className="product__Cart--image"
-            style={{ backgroundImage: `url('${img}')` }}
-          ></div>
-          <div>
-            <h3>{name}</h3>
-            <span>{category}</span>
-          </div>
-          <button
-            onClick={(event) => removeProduct(event.target.id)}
-            className="product__Cart--button"
-            id={id}
-          >
-            Remover
-          </button>
-        </CardCart>
-      ))}
+    <ul
+      className="list__cart"
+      style={{ padding: cartProducts.length !== 0 && "20px 10px" }}
+    >
+      {cartProducts.length !== 0 ? (
+        cartProducts.map(({ id, name, img, category }) => (
+          <CardCart key={id}>
+            <div
+              className="product__cart--image"
+              style={{ backgroundImage: `url('${img}')` }}
+            ></div>
+            <div className="product__cart--info">
+              <h3 className="product__cart--name">{name}</h3>
+              <span className="product__cart--category">{category}</span>
+            </div>
+            <button
+              onClick={(event) => removeProduct(event.target.id)}
+              className="product__cart--button"
+              id={id}
+            >
+              Remover
+            </button>
+          </CardCart>
+        ))
+      ) : (
+        <>
+          <FiShoppingBag className="list__cart--icon" />
+          <p>Sua sacola está vazia</p>
+          <span>Adicione itens</span>
+        </>
+      )}
     </ul>
   );
 }

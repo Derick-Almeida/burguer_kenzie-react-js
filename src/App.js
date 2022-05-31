@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { GlobalStyle } from "./style/global";
+
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import ProductList from "./components/ProductsList";
-import { GlobalStyle } from "./style/global";
+
+import api from "./data/api";
+import "./App.css";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -12,41 +16,39 @@ function App() {
   const [ids, setIds] = useState([]);
 
   useEffect(() => {
-    fetch("https://hamburgueria-kenzie-json-serve.herokuapp.com/products")
-      .then((response) => response.json())
-      .then((response) => setProductList(response))
+    api
+      .get()
+      .then((res) => setProductList(res.data))
       .catch((err) => console.error(err));
   }, []);
 
   return (
     <>
       <GlobalStyle />
-      <div className="App">
-        <Header
+      <Header
+        productList={productList}
+        setFilteredProducts={setFilteredProducts}
+      />
+      <main>
+        <ProductList
           productList={productList}
+          filteredProducts={filteredProducts}
           setFilteredProducts={setFilteredProducts}
+          cartProducts={cartProducts}
+          setCartProducts={setCartProducts}
+          setCartTotal={setCartTotal}
+          ids={ids}
+          setIds={setIds}
         />
-        <main>
-          <ProductList
-            productList={productList}
-            filteredProducts={filteredProducts}
-            setFilteredProducts={setFilteredProducts}
-            cartProducts={cartProducts}
-            setCartProducts={setCartProducts}
-            setCartTotal={setCartTotal}
-            ids={ids}
-            setIds={setIds}
-          />
-          <Cart
-            cartProducts={cartProducts}
-            setCartProducts={setCartProducts}
-            cartTotal={cartTotal}
-            setCartTotal={setCartTotal}
-            ids={ids}
-            setIds={setIds}
-          />
-        </main>
-      </div>
+        <Cart
+          cartProducts={cartProducts}
+          setCartProducts={setCartProducts}
+          cartTotal={cartTotal}
+          setCartTotal={setCartTotal}
+          ids={ids}
+          setIds={setIds}
+        />
+      </main>
     </>
   );
 }

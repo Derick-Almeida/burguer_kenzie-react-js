@@ -1,5 +1,6 @@
 import { Button } from "../../style/global";
 import "./style.css";
+import { CgSearch } from "react-icons/cg";
 
 function InputSearch({ productList, setFilteredProducts }) {
   function showProducts(event) {
@@ -19,7 +20,9 @@ function InputSearch({ productList, setFilteredProducts }) {
   return (
     <div className="container__input">
       <input type="text" placeholder="Digitar Pesquisa" />
-      <Button onClick={(event) => showProducts(event)}>Pesquisar</Button>
+      <Button onClick={(event) => showProducts(event)}>
+        Pesquisar <CgSearch />
+      </Button>
     </div>
   );
 }

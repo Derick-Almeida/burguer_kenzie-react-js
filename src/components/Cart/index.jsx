@@ -1,5 +1,7 @@
 import CartProduct from "../CartProduct";
 import CartTotal from "../CartTotal";
+import { RiShoppingCart2Fill } from "react-icons/ri";
+import "./style.css";
 
 function Cart({
   cartProducts,
@@ -10,21 +12,27 @@ function Cart({
   setIds,
 }) {
   return (
-    <aside>
-      <h2>Carrinho de compras</h2>
+    <aside className="cart">
+      <h2 className="cart__title">
+        <RiShoppingCart2Fill /> Carrinho de compras
+      </h2>
       <CartProduct
         cartProducts={cartProducts}
         setCartProducts={setCartProducts}
         ids={ids}
         setIds={setIds}
-        setCartTotal={setCartTotal}
-      />
-      <CartTotal
         cartTotal={cartTotal}
         setCartTotal={setCartTotal}
-        setCartProducts={setCartProducts}
-        setIds={setIds}
       />
+      {cartProducts.length !== 0 && (
+        <CartTotal
+          cartTotal={cartTotal}
+          cartProducts={cartProducts}
+          setCartTotal={setCartTotal}
+          setCartProducts={setCartProducts}
+          setIds={setIds}
+        />
+      )}
     </aside>
   );
 }

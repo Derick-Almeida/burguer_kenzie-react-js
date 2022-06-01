@@ -42,3 +42,24 @@
     text-align: center;
     color: #828282;
 }
+
+@media (max-width: 1024px) {
+    .list__cart li .product__cart--image {
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .list__cart .list__cart--icon {
+        font-size: 3.5rem;
+    }
+
+    .list__cart p {
+        font-size: 1rem;
+    }
+
+    .list__cart span {
+        font-size: 0.85rem;
+    }
+}

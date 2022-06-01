@@ -33,3 +33,10 @@
     right: 2%;
     top: 12%;
 }
+
+@media (max-width: 425px) {
+    .container__input {
+        margin-top: 14px;
+        width: 100%;
+    }
+}

@@ -1,5 +1,6 @@
 .header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 
@@ -14,10 +15,32 @@
     font-size: 2rem;
     font-weight: 700;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .header .title--small {
     color: #EB5757;
     font-size: 1.3rem;
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 21px 55px;
+    }
+}
+
+@media (max-width: 425px) {
+    .header {
+        padding: 14px 16px;
+        justify-content: center;
+    }
+
+    .header .title {
+        font-size: 1.5rem;
+    }
+
+    .header .title--small {
+        font-size: .9rem;
+    }
 }

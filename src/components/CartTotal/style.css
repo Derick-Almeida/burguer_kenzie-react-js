@@ -18,3 +18,11 @@
 .box__total .box__total--price {
     color: #828282;
 }
+
+@media (max-width: 425px) {
+    .box__total {}
+
+    .box__total p {}
+
+    .box__total .box__total--price {}
+}

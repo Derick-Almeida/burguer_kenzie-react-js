@@ -1,4 +1,49 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const breakpoints = [
+  {
+    break: "1440px",
+    width: "15rem",
+    height: "22rem",
+    boxShadow: true,
+    hover: true,
+  },
+  {
+    break: "1024px",
+    width: "14rem",
+    height: "20rem",
+    boxShadow: true,
+    hover: true,
+  },
+  {
+    break: "768px",
+    width: "12rem",
+    height: "18rem",
+    boxShadow: true,
+    hover: true,
+  },
+  {
+    break: "425px",
+    width: "19rem",
+    height: "21rem",
+    boxShadow: false,
+    hover: false,
+  },
+  {
+    break: "375px",
+    width: "17rem",
+    height: "22rem",
+    boxShadow: false,
+    hover: false,
+  },
+  {
+    break: "320px",
+    width: "15rem",
+    height: "20rem",
+    boxShadow: false,
+    hover: false,
+  },
+];
 
 export const Card = styled.div`
   box-shadow: 2px 2px 4px #7a7a7a;
@@ -6,12 +51,32 @@ export const Card = styled.div`
   border: 2px solid #e0e0e0;
 
   border-radius: 5px;
-  height: 21rem;
-  width: 14rem;
+  width: 18rem;
+  height: 24rem;
+
+  ${() =>
+    breakpoints.map(
+      (breakpoint) => css`
+        @media (max-width: ${breakpoint.break}) {
+          min-width: ${breakpoint.width};
+          width: ${breakpoint.width};
+          height: ${breakpoint.height};
+          ${!breakpoint.boxShadow &&
+          css`
+            box-shadow: none;
+          `}
+          ${!breakpoint.hover &&
+          css`
+            &:hover {
+              transform: none;
+            }
+          `}
+        }
+      `
+    )}
 
   &:hover {
     border: 2px solid #333333;
-    transform: scale(1.1);
     transition: transform 500ms;
 
     button {
@@ -28,6 +93,16 @@ export const Card = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .product__info > h2 {
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
   }
 
   .product__image {

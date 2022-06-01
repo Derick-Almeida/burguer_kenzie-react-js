@@ -1,4 +1,5 @@
 import Product from "../Product";
+import Skeleton from "../Skeleton";
 import "./style.css";
 
 function ProductList({
@@ -10,9 +11,11 @@ function ProductList({
   setCartTotal,
   ids,
   setIds,
+  loading,
 }) {
   return (
     <section className="product__list">
+      {loading && <Skeleton />}
       {filteredProducts.length !== 0
         ? filteredProducts.map((product) => (
             <Product

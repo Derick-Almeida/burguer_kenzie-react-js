@@ -14,12 +14,15 @@ function App() {
   const [cartProducts, setCartProducts] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [ids, setIds] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     api
       .get()
       .then((res) => setProductList(res.data))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(setLoading(false));
   }, []);
 
   return (
@@ -39,6 +42,7 @@ function App() {
           setCartTotal={setCartTotal}
           ids={ids}
           setIds={setIds}
+          loading={loading}
         />
         <Cart
           cartProducts={cartProducts}

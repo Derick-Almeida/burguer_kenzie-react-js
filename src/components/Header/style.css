@@ -30,7 +30,7 @@
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 610px) {
     .header {
         padding: 14px 16px;
         justify-content: center;

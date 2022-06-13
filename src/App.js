@@ -22,7 +22,7 @@ function App() {
       .get()
       .then((res) => setProductList(res.data))
       .catch((err) => console.error(err))
-      .finally(setLoading(false));
+      .finally(setTimeout(() => setLoading(false), 500));
   }, []);
 
   return (
